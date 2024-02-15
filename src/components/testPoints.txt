@@ -1,0 +1,41 @@
+
+{startX: 368, startY: 65, endX: 368, endY: 132}
+2
+: 
+{startX: 368, startY: 134, endX: 540, endY: 134}
+3
+: 
+{startX: 537, startY: 132, endX: 537, endY: 202}
+4
+: 
+{startX: 538, startY: 203, endX: 691, endY: 203}
+5
+: 
+{startX: 688, startY: 207, endX: 688, endY: 285}
+6
+: 
+{startX: 87, startY: 281, endX: 689, endY: 281}
+7
+: 
+{startX: 80, startY: 60, endX: 80, endY: 281}
+
+correct 
+========================================================================
+0
+: 
+{startX: 497, startY: 126, endX: 347, endY: 126}
+1
+: 
+{startX: 349, startY: 202, endX: 349, endY: 127}
+2
+: 
+{startX: 350, startY: 198, endX: 246, endY: 198}
+3
+: 
+{startX: 501, startY: 295, endX: 501, endY: 126}
+4
+: 
+{startX: 500, startY: 294, endX: 244, endY: 294}
+5
+: 
+{startX: 246, startY: 294, endX: 246, endY: 198}
