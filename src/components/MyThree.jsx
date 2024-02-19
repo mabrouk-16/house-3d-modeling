@@ -1,7 +1,11 @@
 import { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { GLTFExporter } from "three/examples/jsm/exporters/GLTFExporter.js";
+import { GLTFExporter } from "three/examples/jsm/exporters/GLTFExporter";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+// import { DRACOLoader } from "three/examples/jsm/loaders/dracoloader";
+// import { useLoader } from "@react-three/fiber";
+// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 function MyThree(props) {
   const canvasRef = useRef(null);
@@ -30,6 +34,17 @@ function MyThree(props) {
     scene.add(axesHelper);
     const gridHelper = new THREE.GridHelper(100, 50);
     scene.add(gridHelper);
+
+    //------------------------------- add 3D models --------------------------
+    // const gltf = new GLTFLoader();
+    // gltf.load("../assets/models/bed/bed1.gltf", (gltfScene) => {
+    //   const loadedScene = gltfScene.scene;
+    //   scene.add(loadedScene);
+    // });
+// function Scene() {
+//   const gltf = useLoader(GLTFLoader, "");
+//   return <primitive object={gltf.scene} />;}
+
 
     // Function to draw 3D walls based on canvas lines
     function drawWalls(lines) {
@@ -71,17 +86,6 @@ function MyThree(props) {
         scene.add(wall);
       });
     }
-
-    // Function to rotate the scene
-    function rotateScene(angleX, angleY, angleZ) {
-      scene.rotation.x = angleX;
-      scene.rotation.y = angleY;
-      scene.rotation.z = angleZ;
-      return scene;
-    }
-
-    // Call the rotateScene function with desired angles
-
     //  scene = rotateScene(Math.PI, 0, 0);
     drawWalls(props.lines);
     // Render the scene
@@ -106,11 +110,6 @@ function MyThree(props) {
   // Function to export the scene as a GLTF file
   function exportScene() {
     const exporter = new GLTFExporter();
-    // let exportedScene = new  THREE.Scene();
-    // exportedScene= scene.clone()
-    // exportedScene.rotateX = Math.PI;
-    // rotateScene(Math.PI, 0, 0);
-
     exporter.parse(scene, function (result) {
       const blob = new Blob([JSON.stringify(result)], {
         type: "application/octet-stream",
@@ -132,7 +131,7 @@ function MyThree(props) {
       <canvas
         ref={canvasRef}
         style={{ width: "100%", height: "100%", display: "block" }}
-      />
+      ></canvas>
     </>
   );
 }
