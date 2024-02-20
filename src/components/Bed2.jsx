@@ -12,7 +12,7 @@ import { useGLTF } from "@react-three/drei";
 
 export function Bed2(props) {
   const { nodes, materials } = useGLTF(
-    "../../public/models/bed2/bed_cream-colored_low_poly.glb"
+    "/models/bed2/bed_cream-colored_low_poly.glb"
   );
   return (
     <group {...props} dispose={null}>
@@ -29,4 +29,4 @@ export function Bed2(props) {
   );
 }
 
-useGLTF.preload("../../public/models/bed2/bed_cream-colored_low_poly.glb");
+useGLTF.preload("/models/bed2/bed_cream-colored_low_poly.glb");

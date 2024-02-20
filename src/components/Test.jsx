@@ -6,11 +6,11 @@ import { Bed2 } from "./Bed2";
 function Test() {
   return (
     <>
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       <ambientLight intensity={0.5} />
       <Bed1 />
-      {/* <Bed2 /> */}
-      {/* <Bed3 /> */}
+      {/* <Bed2 />
+      <Bed3 /> */}
     </>
   );
 }

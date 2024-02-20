@@ -27,7 +27,7 @@ function CanvasDrawing(props) {
         // Add delete button for each line if not added already
         if (!deleteButtons[index]) {
           var deleteButton = document.createElement("button");
-          deleteButton.innerHTML = "X";
+          deleteButton.innerHTML = "x";
           deleteButton.style.position = "absolute";
           deleteButton.style.left = (line.startX + line.endX) / 2 + "px";
           deleteButton.style.top = (line.startY + line.endY) / 2 + "px";

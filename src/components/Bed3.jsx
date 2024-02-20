@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function Bed3(props) {
-  const { nodes, materials } = useGLTF("../../public/models/bed3/scene.gltf");
+  const { nodes, materials } = useGLTF("/models/bed3/scene.gltf");
   return (
     <group {...props} dispose={null}>
       <group scale={0.01}>
@@ -18,4 +18,4 @@ export function Bed3(props) {
   );
 }
 
-useGLTF.preload("../../public/models/bed3/scene.gltf");
+useGLTF.preload("/models/bed3/scene.gltf");

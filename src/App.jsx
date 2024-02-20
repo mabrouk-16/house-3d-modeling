@@ -13,10 +13,8 @@ function App() {
   const [show, setShow] = useState(false);
   const [linesArr, SetLines] = useState([]);
   function send(lines, generate) {
-    console.log("first");
     SetLines([...lines]);
     console.log(lines);
-    
   }
   function showThree() {
     setShow(!show);
@@ -24,6 +22,14 @@ function App() {
   return (
     <>
       {!show && <CanvasDrawing sendData={send} />}
+      <div
+        style={{
+          width: "50px",
+          height: "50px",
+          margin: "15px",
+          backgroundColor: "red",
+        }}
+      ></div>
       <button onClick={showThree}>Generate</button>
       <NewThree lines={linesArr}></NewThree>
     </>

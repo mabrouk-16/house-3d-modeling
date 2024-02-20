@@ -1,6 +1,8 @@
-import React, { useRef } from "react";
-import { Canvas } from "@react-three/fiber";
+import React, { useEffect, useRef } from "react";
+import * as THREE from "three";
+import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import { GUI } from "dat.gui";
 import Test from "./Test";
 
 function NewThree(props) {
@@ -9,22 +11,22 @@ function NewThree(props) {
 
   return (
     <>
-      {/* <button onClick={exportScene}>Save 3D</button> */}
       <Canvas
         ref={canvasRef}
         style={{ width: "100%", height: "100vh", display: "block" }}
         camera={{
           fov: 45,
           near: 0.1,
-          far: 200,
+          far: 500,
           position: [-4, 3, 6],
         }}
       >
         <ambientLight intensity={0.5} />
         <directionalLight intensity={0.5} />
         <OrbitControls />
-          <Test  />
-          <Walls lines={lines} />
+        <Walls lines={lines} />
+        <Test/>
+        {/* <Floor /> */}
       </Canvas>
     </>
   );
@@ -54,8 +56,46 @@ function Wall({ line }) {
     >
       <boxGeometry args={[distance / 10, 5, 1]} />
       <meshBasicMaterial color={0xaaaaaa} />
+      <WallGUI />
     </mesh>
   );
+}
+
+function Floor() {
+  return (
+    <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+      <boxGeometry args={[1000, 1000, 1]} />
+      <meshBasicMaterial color={0xffffff} />
+    </mesh>
+  );
+}
+
+function WallGUI() {
+  const { scene } = useThree();
+
+  useEffect(() => {
+    // Create a GUI
+    const gui = new GUI();
+
+    // Add a color control to the GUI
+    const colorConfig = { color: "#aaaaaa" };
+    const folder = gui.addFolder("Wall Color");
+    folder.addColor(colorConfig, "color").onFinishChange(() => {
+      scene.traverse((child) => {
+        if (child.type === "Mesh" && child.parent.type === "Mesh") {
+          child.material.color.set(colorConfig.color);
+        }
+      });
+    });
+    folder.open();
+
+    // Clean up
+    return () => {
+      gui.destroy();
+    };
+  }, [scene]);
+
+  return null;
 }
 
 export default NewThree;
