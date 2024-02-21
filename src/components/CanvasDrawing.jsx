@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function CanvasDrawing(props) {
   // Array to store lines
+  // const dispatch =useDispatch()
+  // const lines = useSelector((state) => state.canvaReducer.lines);
   const [generate, setGenerate] = useState(false);
   var lines = [];
   var deleteButtons = []; // Array to store delete buttons

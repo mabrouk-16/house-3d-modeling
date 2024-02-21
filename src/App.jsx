@@ -1,16 +1,12 @@
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import "./App.css";
 // import MyThree from "./components/MyThree";
 import CanvasDrawing from "./components/CanvasDrawing";
-import { Environment, OrbitControls } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
-import Test from "./components/Test";
-import MyThree from "./components/MyThree";
-import { Bed1 } from "./components/Bed1";
 import NewThree from "./components/NewThree";
+import ModelControls from "./components/ModelControls";
 
 function App() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [linesArr, SetLines] = useState([]);
   function send(lines, generate) {
     SetLines([...lines]);
@@ -19,19 +15,15 @@ function App() {
   function showThree() {
     setShow(!show);
   }
+
   return (
     <>
-      {!show && <CanvasDrawing sendData={send} />}
-      <div
-        style={{
-          width: "50px",
-          height: "50px",
-          margin: "15px",
-          backgroundColor: "red",
-        }}
-      ></div>
-      <button onClick={showThree}>Generate</button>
-      <NewThree lines={linesArr}></NewThree>
+      {show && <CanvasDrawing sendData={send} />}
+      {!show && <button onMouseDown={showThree}>Generate</button>}
+      <section className="three-section">
+      <ModelControls/>
+        <NewThree lines={linesArr}></NewThree>
+      </section>
     </>
   );
 }

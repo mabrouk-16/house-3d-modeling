@@ -13,7 +13,7 @@ function NewThree(props) {
     <>
       <Canvas
         ref={canvasRef}
-        style={{ width: "100%", height: "100vh", display: "block" }}
+        style={{ width: "100%", height: "90vh", display: "block" }}
         camera={{
           fov: 45,
           near: 0.1,
