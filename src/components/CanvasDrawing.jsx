@@ -1,12 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
 
+var lines = [];
 function CanvasDrawing(props) {
   // Array to store lines
-  // const dispatch =useDispatch()
-  // const lines = useSelector((state) => state.canvaReducer.lines);
+
   const [generate, setGenerate] = useState(false);
-  var lines = [];
   var deleteButtons = []; // Array to store delete buttons
   useEffect(() => {
     var canvas = document.getElementById("myCanvas");
@@ -94,9 +92,6 @@ function CanvasDrawing(props) {
 
         // Redraw the canvas with the new line
         drawLines();
-
-        // Draw 3D walls
-        //  drawWalls();
       }
     });
     function deleteLine(index, number) {
@@ -109,9 +104,6 @@ function CanvasDrawing(props) {
     }
     return () => {
       deleteButtons.map((btn) => btn.remove());
-
-      // console.log(deleteButtons);
-      // deleteButtons.innerHTML = "";
     };
   }, []);
 

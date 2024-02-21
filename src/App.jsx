@@ -10,6 +10,7 @@ function App() {
   const [linesArr, SetLines] = useState([]);
   function send(lines, generate) {
     SetLines([...lines]);
+    localStorage.setItem("lines", JSON.stringify(lines));
     console.log(lines);
   }
   function showThree() {
