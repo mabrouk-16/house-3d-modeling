@@ -9,19 +9,40 @@ Title: Bed cream-colored Low poly
 
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
+import { useDispatch, useSelector } from "react-redux";
+import { highlight, insert } from "../Redux/slices/modelSlice";
 
 export function Bed2(props) {
+  const dispatch = useDispatch();
+
   const { nodes, materials } = useGLTF(
     "/models/bed2/bed_cream-colored_low_poly.glb"
   );
+
+  const position = useSelector((state) => state.modelReducer.position);
+  const rotate = useSelector((state) => state.modelReducer.rotate);
+  const array = useSelector((state) => state.modelReducer.objectsArr);
+  function clickHandler() {
+    dispatch(highlight("Bed2"));
+  }
+  function insertion() {
+    console.log("objects", array);
+    dispatch(insert({ name: "Bed2", position: position, rotate: rotate }));
+  }
+
   return (
-    <group {...props} dispose={null}>
-      <group scale={0.01}>
+    <group
+      {...props}
+      dispose={null}
+      onClick={clickHandler}
+      onDoubleClick={insertion}
+    >
+      <group scale={0.02}>
         <mesh
           geometry={nodes.aeneoclsbdg000005_aeneoclsbdg000005_0.geometry}
           material={materials.aeneoclsbdg000005}
           position={[60, -8.066, 600]}
-          rotation={[-Math.PI / 2, 0, 0]}
+          rotation={[-Math.PI / 2, 0, array[2].rotate]}
           scale={[96.122, 99.135, 29.838]}
         />
       </group>

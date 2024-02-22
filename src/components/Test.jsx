@@ -9,8 +9,8 @@ function Test() {
       {/* <OrbitControls /> */}
       <ambientLight intensity={0.5} />
       <Bed1 />
-      {/* <Bed2 />
-      <Bed3 /> */}
+      <Bed2 />
+      {/* <Bed3 /> */}
     </>
   );
 }
