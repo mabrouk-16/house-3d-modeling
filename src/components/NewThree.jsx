@@ -56,7 +56,7 @@ function Wall({ line }) {
     >
       <boxGeometry args={[distance / 10, 5, 1]} />
       <meshBasicMaterial color={0xaaaaaa} />
-      <WallGUI />
+      {/* <WallGUI /> */}
     </mesh>
   );
 }
@@ -70,32 +70,32 @@ function Floor() {
   );
 }
 
-function WallGUI() {
-  const { scene } = useThree();
+// function WallGUI() {
+//   const { scene } = useThree();
 
-  useEffect(() => {
-    // Create a GUI
-    const gui = new GUI();
+//   useEffect(() => {
+//     // Create a GUI
+//     const gui = new GUI();
 
-    // Add a color control to the GUI
-    const colorConfig = { color: "#aaaaaa" };
-    const folder = gui.addFolder("Wall Color");
-    folder.addColor(colorConfig, "color").onFinishChange(() => {
-      scene.traverse((child) => {
-        if (child.type === "Mesh" && child.parent.type === "Mesh") {
-          child.material.color.set(colorConfig.color);
-        }
-      });
-    });
-    folder.open();
+//     // Add a color control to the GUI
+//     const colorConfig = { color: "#aaaaaa" };
+//     const folder = gui.addFolder("Wall Color");
+//     folder.addColor(colorConfig, "color").onFinishChange(() => {
+//       scene.traverse((child) => {
+//         if (child.type === "Mesh" && child.parent.type === "Mesh") {
+//           child.material.color.set(colorConfig.color);
+//         }
+//       });
+//     });
+//     folder.open();
 
-    // Clean up
-    return () => {
-      gui.destroy();
-    };
-  }, [scene]);
+//     // Clean up
+//     return () => {
+//       gui.destroy();
+//     };
+//   }, [scene]);
 
-  return null;
-}
+//   return null;
+// }
 
 export default NewThree;

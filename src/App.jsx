@@ -5,6 +5,8 @@ import CanvasDrawing from "./components/CanvasDrawing";
 import NewThree from "./components/NewThree";
 import ModelControls from "./components/ModelControls";
 import { useSelector } from "react-redux";
+import List from "./components/List";
+import AddObjects from "./components/AddObjects";
 
 function App() {
   const [show, setShow] = useState(true);
@@ -19,11 +21,13 @@ function App() {
   }
   const array = useSelector((state) => state.modelReducer.objectsArr);
   console.log("objects", array);
+
   return (
     <>
       {show && <CanvasDrawing sendData={send} />}
       {!show && <button onMouseDown={showThree}>Generate</button>}
       <section className="three-section">
+        <AddObjects />
         <ModelControls />
         <NewThree lines={linesArr}></NewThree>
       </section>

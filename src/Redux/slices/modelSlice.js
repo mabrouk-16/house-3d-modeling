@@ -4,12 +4,25 @@ const modelSlice = createSlice({
   initialState: {
     ModelName: "",
     objectsArr: [
-      { name: "vav" },
-      { name: "Bed1", position: [0, 0, 0], rotate: 0 },
-      { name: "Bed2", position: [0, 0, 0], rotate: 0 },
+      {
+        name: "Bed1",
+        position: [0, 0, 0],
+        rotate: 0,
+        isAdded: false,
+        factor: 0.5,
+        // instance:<Bed1/>
+      },
+      {
+        name: "Bed2",
+        position: [0, 0, 0],
+        rotate: 0,
+        isAdded: false,
+        factor: 10,
+      },
     ],
     intervId: "",
     isHighltighted: false,
+    // isAdded: false,
     position: [0, 0, 0],
     rotate: 0,
   },
@@ -20,16 +33,13 @@ const modelSlice = createSlice({
       );
       console.log(action.payload.name);
       if (!isDuplicate) state.objectsArr.push({ ...action.payload });
-
-      // state.objectsArr.forEach((ele) => {
-      //   console.log(ele.name)
-      //   if (ele.name !== action.payload.name)
-      //     state.objectsArr.push({ ...action.payload });
-      // });
-      // if (state.objectsArr.indexOf( ) !== -1) {
-      //   state.objectsArr.push({ ...action.payload });
-      //   console.log(state.objectsArr[0].position);
-      // }
+    },
+    addToScene: (state, action) => {
+      state.objectsArr.map((obj) => {
+        if (obj.name == action.payload) {
+          obj.isAdded = true;
+        }
+      });
     },
     highlight: (state, action) => {
       state.ModelName = action.payload;
@@ -38,27 +48,52 @@ const modelSlice = createSlice({
     },
     moveUp: (state, action) => {
       if (state.isHighltighted) {
-        state.position[2] -= 0.5;
+        state.objectsArr.map((obj) => {
+          if (obj.name == state.ModelName) {
+            state.position = obj.position;
+            state.position[2] -= obj.factor;
+          }
+        });
       }
     },
     moveDown: (state, action) => {
       if (state.isHighltighted) {
-        state.position[2] += 0.5;
+        state.objectsArr.map((obj) => {
+          if (obj.name == state.ModelName) {
+            state.position = obj.position;
+            state.position[2] += obj.factor;
+          }
+        });
       }
     },
     moveLeft: (state, action) => {
       if (state.isHighltighted) {
-        state.position[0] -= 0.5;
+        state.objectsArr.map((obj) => {
+          if (obj.name == state.ModelName) {
+            state.position = obj.position;
+            state.position[0] -= obj.factor;
+          }
+        });
       }
     },
     moveRight: (state, action) => {
       if (state.isHighltighted) {
-        state.position[0] += 0.5;
+        state.objectsArr.map((obj) => {
+          if (obj.name == state.ModelName) {
+            state.position = obj.position;
+            state.position[0] += obj.factor;
+          }
+        });
       }
     },
     rotateRight: (state) => {
       if (state.isHighltighted) {
-        state.rotate += 0.1;
+        state.objectsArr.map((obj) => {
+          if (obj.name == state.ModelName) {
+            state.rotate = obj.rotate;
+            obj.rotate += 0.1;
+          }
+        });
       }
     },
     rotateLeft: (state) => {
@@ -69,7 +104,6 @@ const modelSlice = createSlice({
             obj.rotate -= 0.1;
           }
         });
-        // state.rotate -= 0.1;
       }
     },
     setIntervalId: (state, action) => {
@@ -83,6 +117,7 @@ const modelSlice = createSlice({
 
 export const {
   insert,
+  addToScene,
   highlight,
   moveUp,
   moveDown,

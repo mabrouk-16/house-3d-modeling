@@ -14,39 +14,50 @@ import { highlight, insert } from "../Redux/slices/modelSlice";
 
 export function Bed2(props) {
   const dispatch = useDispatch();
-
   const { nodes, materials } = useGLTF(
     "/models/bed2/bed_cream-colored_low_poly.glb"
   );
-
-  const position = useSelector((state) => state.modelReducer.position);
-  const rotate = useSelector((state) => state.modelReducer.rotate);
   const array = useSelector((state) => state.modelReducer.objectsArr);
+  let object = array.filter((obj) => {
+    return obj.name == "Bed2";
+  });
   function clickHandler() {
     dispatch(highlight("Bed2"));
   }
   function insertion() {
     console.log("objects", array);
-    dispatch(insert({ name: "Bed2", position: position, rotate: rotate }));
+    dispatch(
+      insert({
+        name: "Bed2",
+        position: position,
+        rotate: rotate,
+        isAdded: true,
+        factor: 10,
+      })
+    );
   }
 
   return (
-    <group
-      {...props}
-      dispose={null}
-      onClick={clickHandler}
-      onDoubleClick={insertion}
-    >
-      <group scale={0.02}>
-        <mesh
-          geometry={nodes.aeneoclsbdg000005_aeneoclsbdg000005_0.geometry}
-          material={materials.aeneoclsbdg000005}
-          position={[60, -8.066, 600]}
-          rotation={[-Math.PI / 2, 0, array[2].rotate]}
-          scale={[96.122, 99.135, 29.838]}
-        />
-      </group>
-    </group>
+    <>
+      {object[0].isAdded && (
+        <group
+          {...props}
+          dispose={null}
+          onClick={clickHandler}
+          onDoubleClick={insertion}
+        >
+          <group scale={0.02}>
+            <mesh
+              geometry={nodes.aeneoclsbdg000005_aeneoclsbdg000005_0.geometry}
+              material={materials.aeneoclsbdg000005}
+              position={object[0].position}
+              rotation={[-Math.PI / 2, 0, object[0].rotate]}
+              scale={[96.122, 99.135, 29.838]}
+            />
+          </group>
+        </group>
+      )}
+    </>
   );
 }
 

@@ -7,33 +7,50 @@ export function Bed1(props) {
   const dispatch = useDispatch();
   const groupRef = useRef();
   const { nodes, materials } = useGLTF("/models/bed/bed1.gltf");
-  const position = useSelector((state) => state.modelReducer.position);
-  const rotate = useSelector((state) => state.modelReducer.rotate);
   const array = useSelector((state) => state.modelReducer.objectsArr);
+
+  let object = array.filter((obj) => {
+    return obj.name == "Bed1";
+  });
   function clickHandler() {
     dispatch(highlight("Bed1"));
   }
   function insertion() {
     console.log("objects", array);
-    dispatch(insert({ name: "Bed1", position: position, rotate: rotate }));
+    dispatch(
+      insert({
+        name: "Bed1",
+        position: position,
+        rotate: rotate,
+        isAdded: true,
+        factor: 0.5,
+      })
+    );
   }
-
+  // let show = 0;
+  // if (array[1].isAdded) {
+  //   show = 1 / 500;
+  // } else show = 0;
   return (
-    <group
-      ref={groupRef}
-      onClick={clickHandler}
-      onDoubleClick={insertion}
-      {...props}
-      dispose={null}
-    >
-      <mesh
-        geometry={nodes.defaultMaterial.geometry}
-        material={materials.Material}
-        rotation={[-Math.PI / 2, 0, array[1].rotate]}
-        scale={1 / 500}
-        position={position}
-      ></mesh>
-    </group>
+    <>
+      {object[0].isAdded && (
+        <group
+          ref={groupRef}
+          onClick={clickHandler}
+          onDoubleClick={insertion}
+          {...props}
+          dispose={null}
+        >
+          <mesh
+            geometry={nodes.defaultMaterial.geometry}
+            material={materials.Material}
+            rotation={[-Math.PI / 2, 0, object[0].rotate]}
+            position={object[0].position}
+            scale={1 / 500}
+          ></mesh>
+        </group>
+      )}
+    </>
   );
 }
 
