@@ -1,0 +1,14 @@
+.add-section {
+    width: 200px;
+    height: 400px;
+    overflow-y: scroll;
+
+}
+
+.add-section h1 {
+    margin: 15px auto;
+}
+
+.add-section .container {
+    margin: 15px;
+}

@@ -2,30 +2,50 @@ import React, { useState, useEffect } from "react";
 
 var lines = [];
 function CanvasDrawing(props) {
-  // Array to store lines
-
   const [generate, setGenerate] = useState(false);
-  var deleteButtons = []; // Array to store delete buttons
+  var deleteButtons = [];
   useEffect(() => {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
-    var startX, startY;
-    var endX, endY;
     var isDrawing = false;
+    var isFirstLineDrawn = false;
+    var gridWidth = 25; // Adjust the grid width as needed
+    var startX, startY, endX, endY;
 
-    // Function to draw lines
+    function drawGrid() {
+      ctx.beginPath();
+      ctx.lineWidth = 2; // Set grid line width to 2
+      for (let x = 0; x <= canvas.width; x += gridWidth) {
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+      }
+      for (let y = 0; y <= canvas.height; y += gridWidth) {
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+      }
+      ctx.strokeStyle = "#ccc"; // Grid color
+      ctx.stroke();
+    }
+
     function drawLines() {
-      // Clear the canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Draw all stored lines
+      drawGrid();
       lines.forEach(function (line, index) {
         ctx.beginPath();
+        ctx.strokeStyle = "#000"; // Line color
+        ctx.lineWidth = 6; // Set line width to 6
+        ctx.lineCap = "round"; // Set lineCap to round for smoother edges
         ctx.moveTo(line.startX, line.startY);
         ctx.lineTo(line.endX, line.endY);
         ctx.stroke();
 
-        // Add delete button for each line if not added already
+        // Draw width text above the line
+        const textX = (line.startX + line.endX) / 2 + 10;
+        const textY = (line.startY + line.endY) / 2 - 10; // Adjust the vertical position as needed
+        ctx.font = "18px Arial "; // Adjust font size and style as needed
+        ctx.fillStyle = "#000"; // Text color
+        ctx.fillText(String(`${(line.width / 50).toFixed(1)} m`), textX, textY);
+
         if (!deleteButtons[index]) {
           var deleteButton = document.createElement("button");
           deleteButton.innerHTML = "x";
@@ -39,69 +59,58 @@ function CanvasDrawing(props) {
           deleteButtons[index] = deleteButton;
         }
       });
+    }
 
-      // If currently drawing, draw the current line
+    canvas.addEventListener("mousedown", function (event) {
+      if (!isFirstLineDrawn) {
+        isFirstLineDrawn = true;
+      }
+
+      startX = Math.round(event.offsetX / gridWidth) * gridWidth;
+      startY = Math.round(event.offsetY / gridWidth) * gridWidth;
+      isDrawing = true;
+    });
+
+    canvas.addEventListener("mousemove", function (event) {
       if (isDrawing) {
+        endX = Math.round(event.offsetX / gridWidth) * gridWidth;
+        endY = Math.round(event.offsetY / gridWidth) * gridWidth;
+
+        drawLines();
         ctx.beginPath();
+        ctx.strokeStyle = "#f00"; // Set line color to red (for example)
+        ctx.lineWidth = 6; // Set line width to 6
         ctx.moveTo(startX, startY);
         ctx.lineTo(endX, endY);
         ctx.stroke();
       }
-    }
-
-    // Function to handle mouse down event
-    canvas.addEventListener("mousedown", function (event) {
-      // Set the starting point of the line
-      startX = event.offsetX;
-      startY = event.offsetY;
-      isDrawing = true;
     });
 
-    // Function to handle mouse move event
-    canvas.addEventListener("mousemove", function (event) {
-      if (isDrawing) {
-        // Set the ending point of the line
-        endX = event.offsetX;
-        endY = event.offsetY;
-
-        // Restrict the line to horizontal or vertical
-        var dx = Math.abs(endX - startX);
-        var dy = Math.abs(endY - startY);
-
-        if (dx > dy) {
-          // Snap to horizontal line
-          endY = startY;
-        } else {
-          // Snap to vertical line
-          endX = startX;
-        }
-
-        // Redraw the canvas with the current line
-        drawLines();
-      }
-    });
-
-    // Function to handle mouse up event
     canvas.addEventListener("mouseup", function (event) {
       if (isDrawing) {
-        // Save the current line
-        lines.push({ startX: startX, startY: startY, endX: endX, endY: endY });
-
-        // Reset drawing state
         isDrawing = false;
-
-        // Redraw the canvas with the new line
+        endX = Math.round(event.offsetX / gridWidth) * gridWidth;
+        endY = Math.round(event.offsetY / gridWidth) * gridWidth;
+        const width = Math.sqrt((endX - startX) ** 2 + (endY - startY) ** 2); // Calculate line width
+        lines.push({
+          startX: startX,
+          startY: startY,
+          endX: endX,
+          endY: endY,
+          width: width,
+        });
         drawLines();
       }
     });
+
     function deleteLine(index, number) {
       lines.splice(index, number);
-      // Remove the delete button element
       document.body.removeChild(deleteButtons[index]);
-      deleteButtons[index] = null; // Set the delete button to null
+      deleteButtons[index] = null;
       drawLines();
-      //drawWalls();
     }
+
+    drawGrid(); // Initial drawing of grid
     return () => {
       deleteButtons.map((btn) => btn.remove());
     };
