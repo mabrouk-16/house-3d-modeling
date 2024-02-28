@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { highlight, insert } from "../../Redux/slices/modelSlice";
 
 export function Toilet1(props) {
-  const { nodes, materials } = useGLTF("/models/toilet1/toilet1.gltf");
+  const { nodes, materials } = useGLTF("/models/toilet1/scene.gltf");
   const dispatch = useDispatch();
   const array = useSelector((state) => state.modelReducer.objectsArr);
 
@@ -269,4 +269,4 @@ export function Toilet1(props) {
   );
 }
 
-useGLTF.preload("/models/toilet1/toilet1.gltf");
+useGLTF.preload("/models/toilet1/scene.gltf");

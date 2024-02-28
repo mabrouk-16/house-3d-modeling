@@ -55,7 +55,7 @@ function Wall({ line }) {
       position={[positionX / 10 - 40, positionY, positionZ / 10 - 30]}
       rotation-y={-rotationY}
     >
-      <boxGeometry args={[distance / 10, 5, 1]} />
+      <boxGeometry args={[distance / 10, 5, 0.4]} />
       <meshBasicMaterial color={0xaaaaaa} />
       {/* <WallGUI /> */}
     </mesh>

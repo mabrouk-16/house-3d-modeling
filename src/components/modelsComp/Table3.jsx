@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { highlight, insert } from "../../Redux/slices/modelSlice";
 
 export function Table3(props) {
-  const { nodes, materials } = useGLTF("/models/table3/table3.glb ");
+  const { nodes, materials } = useGLTF("/models/table3/scene.glb ");
   const dispatch = useDispatch();
   const array = useSelector((state) => state.modelReducer.objectsArr);
 
@@ -114,4 +114,4 @@ export function Table3(props) {
   );
 }
 
-useGLTF.preload("/models/table3/table3.glb ");
+useGLTF.preload("/models/table3/scene.glb ");

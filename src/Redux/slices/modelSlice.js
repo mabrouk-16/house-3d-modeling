@@ -2,7 +2,24 @@ import { createSlice } from "@reduxjs/toolkit";
 import bed1Img from "/images/bed1.png";
 import bed2Img from "/images/bed2.png";
 import bed3Img from "/images/bed3.png";
-import Chair1Img from "/images/chair1.png";
+import chair1Img from "/images/chair1.png";
+import door1Img from "/images/door1.png";
+import dresser1Img from "/images/dresser1.png";
+import dresser2Img from "/images/dresser2.png";
+import dresser3Img from "/images/dresser3.png";
+import fridge1Img from "/images/fridge1.png";
+import fridge2Img from "/images/fridge2.png";
+import sofa1Img from "/images/sofa1.png";
+import sofa2Img from "/images/sofa2.png";
+import sofa3Img from "/images/sofa3.png";
+import sofa4Img from "/images/sofa4.png";
+import sofa5Img from "/images/sofa5.png";
+import stove1Img from "/images/stove1.png";
+import stove2Img from "/images/stove2.png";
+import table1Img from "/images/table1.png";
+import table2Img from "/images/table2.png";
+import table3Img from "/images/table3.png";
+import toilet1Img from "/images/toilet1.png";
 import Bed1 from "../../components/modelsComp/Bed1";
 // import Bed1  from "../../components/modelsComp/Bed1";
 const modelSlice = createSlice({
@@ -16,6 +33,7 @@ const modelSlice = createSlice({
         position: [0, 0, 0],
         rotate: 0,
         isAdded: false,
+        
         factor: 0.5,
         img: bed1Img,
         count: 0,
@@ -47,7 +65,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: chair1Img,
         count: 0,
       },
       {
@@ -57,7 +75,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: door1Img,
         count: 0,
       },
       {
@@ -67,7 +85,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: dresser1Img,
         count: 0,
       },
       {
@@ -77,7 +95,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: dresser2Img,
         count: 0,
       },
       {
@@ -87,7 +105,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: dresser3Img,
         count: 0,
       },
       {
@@ -97,7 +115,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: fridge1Img,
         count: 0,
       },
       {
@@ -107,7 +125,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: fridge2Img,
         count: 0,
       },
       {
@@ -117,7 +135,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: sofa1Img,
         count: 0,
       },
       {
@@ -127,7 +145,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: sofa2Img,
         count: 0,
       },
       {
@@ -137,7 +155,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: sofa3Img,
         count: 0,
       },
       {
@@ -147,7 +165,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: sofa4Img,
         count: 0,
       },
       {
@@ -157,7 +175,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: sofa5Img,
         count: 0,
       },
       {
@@ -167,7 +185,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: stove1Img,
         count: 0,
       },
       {
@@ -177,7 +195,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: stove2Img,
         count: 0,
       },
       {
@@ -187,7 +205,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: table1Img,
         count: 0,
       },
       {
@@ -197,7 +215,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: table2Img,
         count: 0,
       },
       {
@@ -207,7 +225,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: table3Img,
         count: 0,
       },
       {
@@ -217,7 +235,7 @@ const modelSlice = createSlice({
         rotate: 0,
         isAdded: false,
         factor: 0.5,
-        img: Chair1Img,
+        img: toilet1Img,
         count: 0,
       },
     ],
@@ -230,25 +248,25 @@ const modelSlice = createSlice({
   },
   reducers: {
     insert: (state, action) => {
-      const isDuplicate = state.objectsArr.some(
-        (obj) => obj.name == action.payload.name
-      );
-      console.log(action.payload.name);
-      if (!isDuplicate) state.objectsArr.push({ ...action.payload });
+      // const isDuplicate = state.objectsArr.some(
+      //   (obj) => obj.name == action.payload.name
+      // );
+      // console.log(action.payload.name);
+      // if (!isDuplicate) state.objectsArr.push({ ...action.payload });
     },
     addToScene: (state, action) => {
       state.objectsArr.map((obj) => {
         if (obj.name == action.payload) {
-          const newObj = {
-            id: Math.random() * 1000,
-            name: obj.name,
-            position: [Math.random() * 10, 0, 0],
-            rotate: 0,
-            factor: obj.factor,
-          };
-          state.addedObjects.push({ ...newObj });
+          // const newObj = {
+          //   id: Math.random() * 1000,
+          //   name: obj.name,
+          //   position: [Math.random() * 10, 0, 0],
+          //   rotate: 0,
+          //   factor: obj.factor,
+          // };
           obj.isAdded = true;
-          obj.count++;
+          state.addedObjects.push({ ...obj });
+          // obj.count++;
           // obj.inst =()=>{return <Bed1 />};
         }
       });

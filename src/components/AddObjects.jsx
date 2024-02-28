@@ -22,7 +22,8 @@ function AddObjects() {
               key={obj.name}
               onClick={() => addObjToScene(obj.name)}
             >
-              {obj.name} <img src={obj.img} alt="" />
+              {/* {obj.name} */}
+               <img src={obj.img} alt="" />
             </div>
           );
         })}

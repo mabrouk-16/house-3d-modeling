@@ -1,6 +1,6 @@
 .addSection {
     width: fit-content;
-    height: 400px;
+    height: 90vh;
     overflow-y: scroll;
 }
 

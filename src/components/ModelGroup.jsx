@@ -1,6 +1,6 @@
 // import { OrbitControls } from "@react-three/drei";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import  Bed1  from "./modelsComp/Bed1";
 import { Bed2 } from "./modelsComp/Bed2";
 import { Bed3 } from "./modelsComp/Bed3";
@@ -29,7 +29,6 @@ function ModelGroup() {
   const arrOfObj = useSelector((state) => state.modelReducer.objectsArr);
   const addedObjects = useSelector((state) => state.modelReducer.addedObjects);
 
-  console.log(addedObjects);
   function showAll() {}
   return (
     <>
@@ -57,29 +56,27 @@ function ModelGroup() {
             break;
         }
       })}  */}
-      <Bed1 />
-      <Bed2 />
-      <Bed3 />
-      {/* ------------------------------------- */}
-      <Chair1 />
-      <Door1/>
-      <Dresser1 />
-      <Dresser2 />
-      <Dresser3/>
-      {/*  */}
-      <Fridge1 />
-      <Fridge2 />
-      <Sofa1/>
-      <Sofa2/>
-      <Sofa3/>
-      <Sofa4/>
-      <Sofa5/>
-      <Stove1/>
-      <Stove2/>
-      <Table1/>
-      <Table2/>
-      <Table3/>
-      <Toilet1/>
+      <Bed1 scale={1.2} />
+      <Bed2 scale={1.2} />
+      <Bed3 scale={1.2} />
+      <Chair1 scale={1.2} />
+      <Door1 scale={1} />
+      <Dresser1 scale={1.2} />
+      <Dresser2 scale={1.2} />
+      <Dresser3 scale={1.2} />
+      <Fridge1 scale={1.2} />
+      <Fridge2 scale={1.2} />
+      <Sofa1 scale={1.2} />
+      <Sofa2 scale={1.2} />
+      <Sofa3 scale={1.2} />
+      <Sofa4 scale={1.2} />
+      <Sofa5 scale={1.2} />
+      <Stove1 scale={1.2} />
+      <Stove2 scale={1.2} />
+      <Table1 scale={1.2} />
+      <Table2 scale={1.2} />
+      <Table3 scale={1.2} />
+      <Toilet1 scale={1.2} />
     </>
   );
 }
