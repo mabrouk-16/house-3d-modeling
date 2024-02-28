@@ -1,0 +1,11 @@
+Model Information:
+* title:	Dresser
+* source:	https://sketchfab.com/3d-models/dresser-c41bb69a04df432bbe43d220796f7d68
+* author:	saintkastiell (https://sketchfab.com/saintkastiell)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Dresser" (https://sketchfab.com/3d-models/dresser-c41bb69a04df432bbe43d220796f7d68) by saintkastiell (https://sketchfab.com/saintkastiell) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

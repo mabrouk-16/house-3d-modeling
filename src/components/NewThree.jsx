@@ -2,8 +2,7 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { GUI } from "dat.gui";
-import Test from "./Test";
+import ModelGroup from "./ModelGroup";
 
 function NewThree(props) {
   const lines = props.lines;
@@ -25,7 +24,9 @@ function NewThree(props) {
         <directionalLight intensity={0.5} />
         <OrbitControls />
         <Walls lines={lines} />
-        <Test/>
+        {/* <Test/> */}
+        <ModelGroup />
+
         {/* <Floor /> */}
       </Canvas>
     </>

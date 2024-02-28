@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sofa 2 | 3DX
+* source:	https://sketchfab.com/3d-models/sofa-2-3dx-2e625caf1f8a444aa03b763859759d83
+* author:	Snowism (https://sketchfab.com/snowvy)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sofa 2 | 3DX" (https://sketchfab.com/3d-models/sofa-2-3dx-2e625caf1f8a444aa03b763859759d83) by Snowism (https://sketchfab.com/snowvy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

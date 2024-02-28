@@ -3,10 +3,10 @@ import { useGLTF } from "@react-three/drei";
 import { useDispatch, useSelector } from "react-redux";
 import { highlight, insert } from "../../Redux/slices/modelSlice";
 
-export function Bed1(props) {
+function Bed1(props) {
+  const { nodes, materials } = useGLTF("/models/bed/bed1.gltf");
   const dispatch = useDispatch();
   const groupRef = useRef();
-  const { nodes, materials } = useGLTF("/models/bed/bed1.gltf");
   const array = useSelector((state) => state.modelReducer.objectsArr);
 
   let object = array.filter((obj) => {
@@ -55,3 +55,4 @@ export function Bed1(props) {
 }
 
 useGLTF.preload("/models/bed/bed1.gltf");
+export default Bed1;

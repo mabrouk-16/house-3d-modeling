@@ -1,0 +1,8 @@
+Model Information:
+* title:	Simple office table
+* source:	https://sketchfab.com/3d-models/simple-office-table-b044f25f823c4d54ab32bdf16a205456
+* author:	RillenMeister (https://sketchfab.com/RillenMeister)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

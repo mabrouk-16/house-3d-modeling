@@ -1,10 +1,9 @@
 import { Suspense, useEffect, useState } from "react";
-// import "./App.css";
+import "./Three.css";
 import CanvasDrawing from "./CanvasDrawing";
 import NewThree from "./NewThree";
 import ModelControls from "./ModelControls";
 import { useSelector } from "react-redux";
-// import List from "./List";
 import AddObjects from "./AddObjects";
 
 function ThreeContainer() {
@@ -25,10 +24,10 @@ function ThreeContainer() {
     <>
       {show && <CanvasDrawing sendData={send} />}
       {!show && <button onMouseDown={showThree}>Generate</button>}
+        <ModelControls />
       <section className="three-section">
         <AddObjects />
-        <ModelControls />
-        <NewThree lines={linesArr}></NewThree>
+        <NewThree lines={linesArr}/>
       </section>
     </>
   );
