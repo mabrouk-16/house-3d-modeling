@@ -20,7 +20,7 @@ function NewThree(props) {
           position: [-4, 3, 6],
         }}
       >
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={0.5} position={[5,10,15]} />
         <directionalLight intensity={0.5} />
         <OrbitControls />
         <Walls lines={lines} />
