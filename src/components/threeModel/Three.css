@@ -1,0 +1,28 @@
+.three-section {
+    display: flex;
+    margin-top: 25px;
+}
+
+.screen-btn:hover {
+    background-color: rgb(122, 101, 76);
+    cursor: pointer;
+}
+
+.screen-btn {
+    position: absolute;
+    top: -20px;
+    right: 25px;
+
+    background-color: #c9ab7c;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: -80px;
+    border: 1px solid #b9a179;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    z-index: 10;
+}

@@ -66,7 +66,7 @@ function ModelGroup() {
       <Dresser3 scale={1.2} />
       <Fridge1 scale={1.2} />
       <Fridge2 scale={1.2} />
-      <Sofa1 scale={1.2} />
+      <Sofa1 scale={1.4} />
       <Sofa2 scale={1.2} />
       <Sofa3 scale={1.2} />
       <Sofa4 scale={1.2} />

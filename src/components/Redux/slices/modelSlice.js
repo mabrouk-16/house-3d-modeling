@@ -20,8 +20,6 @@ import table1Img from "/images/table1.png";
 import table2Img from "/images/table2.png";
 import table3Img from "/images/table3.png";
 import toilet1Img from "/images/toilet1.png";
-import Bed1 from "../../components/modelsComp/Bed1";
-// import Bed1  from "../../components/modelsComp/Bed1";
 const modelSlice = createSlice({
   name: "model",
   initialState: {
@@ -33,7 +31,7 @@ const modelSlice = createSlice({
         position: [0, 0, 0],
         rotate: 0,
         isAdded: false,
-        
+
         factor: 0.5,
         img: bed1Img,
         count: 0,
@@ -271,6 +269,24 @@ const modelSlice = createSlice({
         }
       });
     },
+    removeFromScene: (state, action) => {
+      state.objectsArr.map((obj) => {
+        if (obj.name == action.payload) {
+          // const newObj = {
+          //   id: Math.random() * 1000,
+          //   name: obj.name,
+          //   position: [Math.random() * 10, 0, 0],
+          //   rotate: 0,
+          //   factor: obj.factor,
+          // };
+          obj.isAdded = false;
+          state.addedObjects.splice({ ...obj }, 1);
+          console.log("from redux=>", state.ModelName, state.isAdded);
+          // obj.count++;
+          // obj.inst =()=>{return <Bed1 />};
+        }
+      });
+    },
     highlight: (state, action) => {
       state.ModelName = action.payload;
       state.isHighltighted = true;
@@ -348,6 +364,7 @@ const modelSlice = createSlice({
 export const {
   insert,
   addToScene,
+  removeFromScene,
   highlight,
   moveUp,
   moveDown,

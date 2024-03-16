@@ -1,0 +1,28 @@
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 300px;
+    margin-top: 10px;
+    background: rgb(255, 255, 255);
+}
+
+.controls button {
+    background-color: #c9ab7c;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: -80px;
+    border: 1px solid #b9a179;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.controls button:hover {
+    background-color: rgb(122, 101, 76);
+    cursor: pointer;
+}

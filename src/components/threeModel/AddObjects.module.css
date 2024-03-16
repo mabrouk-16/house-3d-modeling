@@ -1,0 +1,76 @@
+.addSection {
+  width: fit-content;
+  height: 90vh;
+  overflow-y: scroll;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  height: 90%;
+  background: #f8f5f2;
+  z-index: 100;
+  transition: all 0.5s ease;
+}
+
+
+
+.addSection::-webkit-scrollbar {
+  width: 10px;
+
+}
+
+.addSection::-webkit-scrollbar-thumb {
+  background-color: #ad885f;
+  border-radius: 5px;
+
+}
+
+
+.addSection::-webkit-scrollbar-track {
+  background-color: #d9d9d9;
+  border-radius: 4px;
+}
+
+.sidebar_close {
+  background-color: #fbf7f0;
+  height: 85vh;
+}
+
+h1 {
+  margin: 20px 80px 10px;
+  color: #b9a179;
+  transition: 0.3s ease;
+  transition-delay: 0.1s;
+}
+
+.addSection .container {
+  display: grid;
+  grid-template-columns: 130px 130px;
+  gap: 5px;
+  margin: 10px 15px 0px 5px;
+
+}
+
+.addSection .card {
+  margin: 5px 10px;
+  border: 2px solid #b9a179;
+  border-radius: 15px;
+  cursor: pointer;
+  height: 100px;
+  width: 120px
+}
+
+.addSection .card img {
+  width: 120px;
+  height: 100px;
+  border-radius: 15px;
+}
+
+
+/* //////////////////////////////////////// */
+
+
+@media (max-width: 420px) {
+  .sidebar.close {
+    display: none;
+  }
+}

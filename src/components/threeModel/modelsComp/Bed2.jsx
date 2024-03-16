@@ -24,6 +24,7 @@ export function Bed2(props) {
   function clickHandler() {
     dispatch(highlight("Bed2"));
   }
+  console.log(object[0].isAdded, object);
   function insertion() {
     console.log("objects", array);
     dispatch(

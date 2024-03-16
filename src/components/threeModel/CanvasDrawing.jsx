@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import classes from "./CanvasDrawing.module.css";
+import { useDispatch } from "react-redux";
+import { setLines } from "../Redux/slices/canvaSlice";
 
 var lines = [];
 function CanvasDrawing(props) {
-  const [generate, setGenerate] = useState(false);
+  const dispatch = useDispatch();
   var deleteButtons = [];
   useEffect(() => {
     var canvas = document.getElementById("myCanvas");
@@ -118,13 +121,16 @@ function CanvasDrawing(props) {
 
   return (
     <>
-      <canvas
-        id="myCanvas"
-        width={800}
-        height={600}
-        style={{ border: "1px solid black" }}
-      />
-      <button onClick={() => props.sendData(lines, generate)}>send</button>
+      <canvas id="myCanvas" width={1000} height={600} style={{ border: "2px solid  #ad885f" }} />
+      <button
+        className={classes.savebtn}
+        onClick={() => {
+          props.sendData();
+          dispatch(setLines(lines));
+        }}
+      >
+        Show In 3D
+      </button>
     </>
   );
 }

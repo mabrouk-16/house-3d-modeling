@@ -6,9 +6,11 @@ const canvaSlice = createSlice({
     lines: [],
   },
   reducers: {
-    generate: (state, action) => {},
+    setLines: (state, action) => {
+      state.lines = [...action.payload];
+    },
   },
 });
 
-export const { generate } = canvaSlice.actions;
+export const { setLines } = canvaSlice.actions;
 export default canvaSlice.reducer;

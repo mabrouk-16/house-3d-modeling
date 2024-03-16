@@ -1,5 +1,5 @@
 import "./App.css";
-import ThreeContainer from "./components/ThreeContainer";
+import ThreeContainer from "./components/threeModel/ThreeContainer";
 
 function App() {
   return (
