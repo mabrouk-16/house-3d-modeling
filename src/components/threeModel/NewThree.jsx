@@ -53,7 +53,7 @@ function NewThree() {
           position: [-4, 3, 6],
         }}
       >
-        <Environment files="pic.hdr" background />
+{/*         <Environment files="pic.hdr" background /> */}
         <ambientLight intensity={0.01} position={[5, 10, 15]} />
         <OrbitControls />
         <Walls lines={lines} />
