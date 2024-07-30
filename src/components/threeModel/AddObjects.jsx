@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToScene } from "../Redux/slices/modelSlice";
+import { addToScene } from "../../Redux/slices/modelSlice";
 import classes from "./AddObjects.module.css";
 
 function AddObjects() {

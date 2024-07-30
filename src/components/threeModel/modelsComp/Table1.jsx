@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useDispatch, useSelector } from "react-redux";
-import { highlight, insert } from "../../Redux/slices/modelSlice";
+import { highlight, insert } from "../../../Redux/slices/modelSlice";
 
 export function Table1(props) {
   const { nodes, materials } = useGLTF("/models/table1/scene.gltf");
@@ -39,22 +39,10 @@ export function Table1(props) {
           scale={0.02}
         >
           <group rotation={[-Math.PI / 2, 0, 0]}>
-            <mesh
-              geometry={nodes.Object_2.geometry}
-              material={materials.FARBA}
-            />
-            <mesh
-              geometry={nodes.Object_3.geometry}
-              material={materials.HICKORY}
-            />
-            <mesh
-              geometry={nodes.Object_4.geometry}
-              material={materials.biela}
-            />
-            <mesh
-              geometry={nodes.Object_5.geometry}
-              material={materials.biela}
-            />
+            <mesh geometry={nodes.Object_2.geometry} material={materials.FARBA} />
+            <mesh geometry={nodes.Object_3.geometry} material={materials.HICKORY} />
+            <mesh geometry={nodes.Object_4.geometry} material={materials.biela} />
+            <mesh geometry={nodes.Object_5.geometry} material={materials.biela} />
           </group>
         </group>
       )}

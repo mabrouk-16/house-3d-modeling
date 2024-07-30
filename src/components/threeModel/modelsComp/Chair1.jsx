@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useDispatch, useSelector } from "react-redux";
-import { highlight, insert } from "../../Redux/slices/modelSlice";
+import { highlight, insert } from "../../../Redux/slices/modelSlice";
 
 export function Chair1(props) {
   const { nodes, materials } = useGLTF("/models/chair1/scene.gltf");

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { highlight, insert } from "../../Redux/slices/modelSlice";
+import { highlight, insert } from "../../../Redux/slices/modelSlice";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
 export function Dresser3(props) {

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useDispatch, useSelector } from "react-redux";
-import { highlight, insert } from "../../Redux/slices/modelSlice";
+import { highlight, insert } from "../../../Redux/slices/modelSlice";
 
 export function Stove2(props) {
   const { nodes, materials } = useGLTF("/models/stove2/stove.glb");
@@ -41,14 +41,8 @@ export function Stove2(props) {
           <group position={[0, -10, 0]} rotation={[-Math.PI / 2, 0, Math.PI]}>
             <group rotation={[Math.PI / 2, 0, 0]}>
               <group position={[-0.635, 77.261, -0.724]}>
-                <mesh
-                  geometry={nodes.defaultMaterial_5.geometry}
-                  material={materials.Stove}
-                />
-                <mesh
-                  geometry={nodes.defaultMaterial_6.geometry}
-                  material={materials.Stove}
-                />
+                <mesh geometry={nodes.defaultMaterial_5.geometry} material={materials.Stove} />
+                <mesh geometry={nodes.defaultMaterial_6.geometry} material={materials.Stove} />
               </group>
               <mesh
                 geometry={nodes.defaultMaterial.geometry}

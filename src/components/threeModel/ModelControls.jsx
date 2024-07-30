@@ -11,7 +11,7 @@ import {
   rotateRight,
   rotateLeft,
   removeFromScene,
-} from "../Redux/slices/modelSlice";
+} from "../../Redux/slices/modelSlice";
 import { useEffect } from "react";
 
 function ModelControls() {
@@ -19,7 +19,7 @@ function ModelControls() {
   // Listen for keyboard events to move the object
   useEffect(() => {
     const handleKeyDown = (event) => {
-      console.log(event.key);
+      // console.log(event.key);
       switch (event.key) {
         case "ArrowUp":
           dispatch(moveUp());
