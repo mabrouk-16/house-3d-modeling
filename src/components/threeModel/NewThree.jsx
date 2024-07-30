@@ -54,7 +54,7 @@ function NewThree() {
         }}
       >
 {/*         <Environment files="pic.hdr" background /> */}
-        <ambientLight intensity={0.01} position={[5, 10, 15]} />
+        <ambientLight intensity={0.5} position={[5, 10, 15]} />
         <OrbitControls />
         <Walls lines={lines} />
         {/* <Test/> */}
