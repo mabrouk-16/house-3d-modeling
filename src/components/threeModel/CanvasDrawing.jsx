@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import classes from "./CanvasDrawing.module.css";
 import { useDispatch } from "react-redux";
-import { setLines } from "../Redux/slices/canvaSlice";
+import { setLines } from "../../Redux/slices/canvaSlice";
 
 var lines = [];
 function CanvasDrawing(props) {
+  const wrapper = useRef(null);
+  console.log(wrapper.current);
   const dispatch = useDispatch();
   var deleteButtons = [];
   useEffect(() => {
@@ -58,7 +60,7 @@ function CanvasDrawing(props) {
           deleteButton.addEventListener("click", function () {
             deleteLine(index, 1);
           });
-          document.body.appendChild(deleteButton);
+          wrapper.current.appendChild(deleteButton);
           deleteButtons[index] = deleteButton;
         }
       });
@@ -108,8 +110,8 @@ function CanvasDrawing(props) {
 
     function deleteLine(index, number) {
       lines.splice(index, number);
-      document.body.removeChild(deleteButtons[index]);
-      deleteButtons[index] = null;
+      wrapper.current.removeChild(deleteButtons[index]);
+      // deleteButtons[index] = null;
       drawLines();
     }
 
@@ -121,16 +123,18 @@ function CanvasDrawing(props) {
 
   return (
     <>
-      <canvas id="myCanvas" width={1000} height={600} style={{ border: "2px solid  #ad885f" }} />
-      <button
-        className={classes.savebtn}
-        onClick={() => {
-          props.sendData();
-          dispatch(setLines(lines));
-        }}
-      >
-        Show In 3D
-      </button>
+      <div ref={wrapper} className={classes.canvaWrapper}>
+        <canvas id="myCanvas" width={1000} height={600} style={{ border: "2px solid  #ad885f" }} />
+        <button
+          className={classes.savebtn}
+          onClick={() => {
+            props.sendData();
+            dispatch(setLines(lines));
+          }}
+        >
+          Show In 3D
+        </button>
+      </div>
     </>
   );
 }

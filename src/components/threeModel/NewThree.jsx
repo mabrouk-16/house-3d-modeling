@@ -1,12 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import * as THREE from "three";
-// import pic from "../../public/pic.hdr";
-import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
-
-import { Canvas, useThree } from "@react-three/fiber";
-import { Environment, OrbitControls, useEnvironment } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { Environment, OrbitControls, useTexture } from "@react-three/drei";
 import ModelGroup from "./ModelGroup";
 import { useSelector } from "react-redux";
+import img from "/images/Wallpaper.jpg";
+import img2 from "/images/wall.webp";
 import "./Three.css";
 
 function NewThree() {
@@ -55,7 +53,7 @@ function NewThree() {
           position: [-4, 3, 6],
         }}
       >
-        <Environment files={"pic.hdr"} background />
+        <Environment files="pic.hdr" background />
         <ambientLight intensity={0.01} position={[5, 10, 15]} />
         <OrbitControls />
         <Walls lines={lines} />
@@ -82,22 +80,62 @@ function Wall({ line }) {
   const positionX = (line.startX + line.endX) / 2;
   const positionY = 5 / 2;
   const positionZ = (line.startY + line.endY) / 2;
-  const rotationY = Math.atan2(line.startY - line.endY, line.startX - line.endX);
+  const rotationY = Math.atan2(
+    line.startY - line.endY,
+    line.startX - line.endX
+  );
+  const wallImg = useTexture(img2);
 
   return (
-    <mesh position={[positionX / 10 - 40, positionY, positionZ / 10 - 30]} rotation-y={-rotationY}>
+    <mesh
+      position={[positionX / 10 - 40, positionY, positionZ / 10 - 30]}
+      rotation-y={-rotationY}
+    >
       <boxGeometry args={[distance / 10, 5, 0.4]} />
-      <meshBasicMaterial color={0xaaaaaa} />
+      <meshBasicMaterial color={0xaaaaaa} map={wallImg} />
       {/* <WallGUI /> */}
     </mesh>
   );
 }
 function Floor() {
+  const floorImg = useTexture(img);
   return (
     <mesh position={[0, -1, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-      <boxGeometry args={[100, 100, 1]} />
-      <meshBasicMaterial color={0xffffff} />
+      <boxGeometry args={[300, 300, 1]} />
+      <meshBasicMaterial map={floorImg} />
     </mesh>
   );
 }
+
 export default NewThree;
+
+// function Walls({ lines }) {
+//   return lines.map((line, index) => <Wall key={index} line={line} />);
+// }
+
+// function Wall({ line }) {
+//   const distance = Math.sqrt(
+//     Math.pow(line.endX - line.startX, 2) + Math.pow(line.endY - line.startY, 2)
+//   );
+
+//   const positionX = (line.startX + line.endX) / 2;
+//   const positionY = 5 / 2;
+//   const positionZ = (line.startY + line.endY) / 2;
+//   const rotationY = Math.atan2(line.startY - line.endY, line.startX - line.endX);
+
+//   return (
+//     <mesh position={[positionX / 10 - 40, positionY, positionZ / 10 - 30]} rotation-y={-rotationY}>
+//       <boxGeometry args={[distance / 10, 5, 0.4]} />
+//       <meshBasicMaterial color={0xaaaaaa} />
+//       {/* <WallGUI /> */}
+//     </mesh>
+//   );
+// }
+// function Floor() {
+//   return (
+//     <mesh position={[0, -1, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+//       <boxGeometry args={[100, 100, 1]} />
+//       <meshBasicMaterial color={0xffffff} />
+//     </mesh>
+//   );
+// }
